@@ -1,0 +1,12 @@
+{
+  "mandatoryField": "Campo obligatorio",
+  "confirm": "Confirmar",
+  "cancel": "Cancelar",
+  "writeEmail": "Escribe tu email",
+  "loginDescription": "Escribe tu email y contraseña para continuar",
+  "login": "Iniciar sesión",
+  "email": "Email",
+  "password": "Contraseña",
+  "writePassword": "Escribe tu contraseña",
+  "forgotPassword": "¿Olvidaste tu contraseña?"
+}
