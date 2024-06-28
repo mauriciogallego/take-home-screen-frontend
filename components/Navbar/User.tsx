@@ -4,13 +4,15 @@ import { signOut } from 'next-auth/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Menu, Transition } from '@headlessui/react';
 import { removeToken } from '@/helper/api';
-import useUser from '@/hooks/useUser';
+import useUser from '@/hooks/queries/useUser';
 import LogOut from '../../svg/log-out-icon';
 import Profile from '../../svg/user';
 import ModalConfirmation from '../modal/ModalConfirmation';
+import { useTranslation } from 'next-i18next';
 
 export const UserOptions = () => {
   const queryClient = useQueryClient();
+  const { t } = useTranslation(['common']);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: user } = useUser();
 
@@ -31,13 +33,13 @@ export const UserOptions = () => {
   return (
     <>
       <ModalConfirmation
-        title="¿Deseas cerrar sesión?"
+        title={t('askLogOut')}
         visible={isModalOpen}
-        message="Si tienes formularios sin enviar asegúrate de guardarlos previamente."
-        cancelText="Cancelar"
+        message={t('areYouSure')}
+        cancelText={t('cancel')}
         onCancel={() => setIsModalOpen(false)}
         onConfirm={handleConfirm}
-        confirmText="Cerrar sesión"
+        confirmText={t('logOut')}
       />
       <Menu>
         <Menu.Button test-id="user-data-click">
@@ -63,7 +65,7 @@ export const UserOptions = () => {
               </div>
               <div className="px-2.5">
                 <p className="text-xs font-medium tracking-wide leading-5">
-                  {user?.email}
+                  {user?.name}
                 </p>
               </div>
             </div>
@@ -80,7 +82,7 @@ export const UserOptions = () => {
                       className="group-hover:fill-primary ml-[2px]"
                     />
                     <span className="flex-1 ml-3 font-normal tracking-wide text-xs group-hover:text-primary">
-                      Cerrar sesión
+                      {t('logOut')}
                     </span>
                   </div>
                 )}

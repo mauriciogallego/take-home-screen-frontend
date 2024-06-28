@@ -1,12 +1,24 @@
 {
   "mandatoryField": "Campo obligatorio",
+  "rfq": "RFQ",
+  "rfqDetail": "Detalle del RFQ",
+  "name": "Nombre",
+  "open": "Abrir",
+  "sendQuote": "Enviar cotizacion",
   "confirm": "Confirmar",
   "cancel": "Cancelar",
   "writeEmail": "Escribe tu email",
   "loginDescription": "Escribe tu email y contraseña para continuar",
   "login": "Iniciar sesión",
+  "logOut": "Cerrar sesión",
   "email": "Email",
   "password": "Contraseña",
   "writePassword": "Escribe tu contraseña",
-  "forgotPassword": "¿Olvidaste tu contraseña?"
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "askLogOut": "¿Deseas cerrar sesión?",
+  "areYouSure": "¿Estas seguro que deseas cerrar sesión?",
+  "homePage": "Inicio",
+  "error": "Error",
+  "pageNotFound": "Página no encontrada",
+  "pageNotFound2": "Lo sentimos, no encontramos la página solicitada."
 }

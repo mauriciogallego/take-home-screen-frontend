@@ -3,7 +3,6 @@ import { useForm, useWatch } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useTranslation } from 'next-i18next';
-import Image from 'next/legacy/image';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link';
@@ -14,7 +13,6 @@ import Input from '@/components/common/Input/Input';
 import Button from '@/components/common/Button/Button';
 import { setToken } from '@/helper/api';
 import { CustomerSession, DataLogin } from '@/@types/index';
-import Logo from '../public/static/svg/logo.svg';
 
 const Login: NextPage = () => {
   const { showErrorMessage } = useContext(ToastContext);
@@ -23,10 +21,12 @@ const Login: NextPage = () => {
   const { status }: { status: string } = useSession();
   const { t } = useTranslation(['common']);
   const [loading, setLoading] = useState(false);
+
   const schema = yup.object().shape({
     email: yup.string().required().email(),
     password: yup.string().required(),
   });
+
   const {
     register,
     handleSubmit,
@@ -48,22 +48,23 @@ const Login: NextPage = () => {
         redirect: false,
       });
 
-      setLoading(false);
-
       if (response?.error) {
         const error = JSON.parse(response.error);
-        showErrorMessage(error.message);
         throw new Error(error);
       }
-    } catch (error) {
-      setLoading(false);
-    } finally {
+
       const session: CustomerSession | null = await getSession();
 
       if (session?.accessToken) {
         setToken(session.accessToken);
-        router.push('/policies');
+        router.push('/');
       }
+    } catch (error) {
+      if (typeof error === 'string') {
+        showErrorMessage(error);
+      }
+    } finally {
+      setLoading(false);
     }
   };
 

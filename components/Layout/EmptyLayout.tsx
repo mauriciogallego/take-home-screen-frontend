@@ -13,11 +13,7 @@ const EmptyLayout: FC<Props> = ({ children }: Props) => (
       <meta name="description" content="WEB APP" />
     </Head>
     <Spinner />
-    <div className="flex-1 w-full">
-      <main className="w-full h-full">
-        <div className="max-w-7xl m-auto h-full">{children}</div>
-      </main>
-    </div>
+    {children}
   </>
 );
 

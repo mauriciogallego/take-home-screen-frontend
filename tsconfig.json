@@ -20,7 +20,8 @@
       "@/constants/*": ["constants/*"],
       "@/@types/*": ["@types/*"],
       "@/helper/*": ["helper/*"],
-      "@/context/*": ["context/*"]
+      "@/context/*": ["context/*"],
+      "@/svg/*": ["svg/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

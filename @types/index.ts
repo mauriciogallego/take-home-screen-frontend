@@ -93,3 +93,54 @@ export type ModalProps = {
   confirmText?: string;
   isValid?: boolean;
 };
+
+export type Sale = {
+  id: string;
+  name: string;
+  active: boolean;
+  email: string;
+  password: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type TableProps = {
+  data: object[];
+  columns: any[];
+  loadMore?: () => void;
+  clickButton?: (type: string, row: any) => void;
+  clickSecondary?: () => void;
+  clickRow?: (value: any) => void;
+  showMenu?: boolean;
+};
+
+export type TDProps = {
+  style: any;
+  cell: any;
+  clickButton?: (type: string, row: any, header?: string) => void;
+  clickSecondary?: () => void;
+  align?: 'center' | 'left' | 'right';
+  maxWidth?: number | string;
+  showMenu?: boolean;
+};
+
+export type RFQ = {
+  id: string;
+  body: string;
+  subject: string;
+  customerEmail: string;
+  items: Object | Array<any>;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export interface IPaginatedResult<T> {
+  results: T[];
+  pagination: {
+    total: number | undefined;
+    size: number;
+    skip: number;
+    take: number;
+    hasMore?: boolean;
+  };
+}

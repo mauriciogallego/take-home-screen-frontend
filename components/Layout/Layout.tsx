@@ -13,7 +13,6 @@ type Props = {
 
 const Layout: FC<Props> = ({ children }: Props) => {
   const { pathname } = useRouter();
-  console.log({ pathname });
   if (pathname === '/login') {
     return <AccessLayout>{children}</AccessLayout>;
   }
@@ -28,7 +27,7 @@ const Layout: FC<Props> = ({ children }: Props) => {
         <meta name="description" content="WEB APP" />
       </Head>
       <Spinner />
-      <div className="flex-1 w-full">
+      <div className="h-screen">
         <NavBar>
           <main className="w-full h-full">
             <div className="max-w-6xl m-auto h-full">{children}</div>

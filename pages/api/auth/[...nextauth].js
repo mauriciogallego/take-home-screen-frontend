@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { post } from '@/helper/api';
 
 const providers = [
@@ -42,22 +42,19 @@ const callbacks = {
     if (user) {
       useToken.accessToken = user.access_token;
     }
-
     return token;
   },
 
   async session({ session, token }) {
-    const useSession = session;
-
     if (token?.accessToken) {
       const userToken = await jwtDecode(token.accessToken);
-      useSession.accessToken = token.accessToken;
-      useSession.user = {
+      session.accessToken = token.accessToken;
+      session.user = {
         email: userToken.email,
         active: userToken.active,
       };
     }
-    return useSession;
+    return session;
   },
 };
 
@@ -80,8 +77,8 @@ export default NextAuth({
   callbacks,
   cookies,
   secret: process.env.NEXTAUTH_SECRET,
-  // colocamos esto un tiempo para saber que problema
-  // hay cuando queremos loggearnos y nos tira error
+  // We put this here for a while to understand what problem
+  // occurs when we try to log in and get an error
   logger: {
     error(code, metadata) {
       console.error(code, metadata);
