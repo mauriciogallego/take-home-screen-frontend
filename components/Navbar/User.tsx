@@ -56,7 +56,7 @@ export const UserOptions = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute z-20 right-24 top-14 w-[267px] shadow-md rounded-md focus:outline-none bg-[#FAFAFA] border border-[#E8EEF2]">
+          <Menu.Items className="absolute z-20 right-16 top-14 w-[267px] shadow-md rounded-md focus:outline-none bg-[#FAFAFA] border border-[#E8EEF2]">
             <div className="p-3 flex items-center">
               <div>
                 <div className="bg-[#1D2530] p-[9px] rounded-md">

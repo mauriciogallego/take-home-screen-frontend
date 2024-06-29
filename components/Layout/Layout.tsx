@@ -29,9 +29,8 @@ const Layout: FC<Props> = ({ children }: Props) => {
       <Spinner />
       <div className="h-screen">
         <NavBar>
-          <main className="w-full h-full">
-            <div className="max-w-6xl m-auto h-full">{children}</div>
-          </main>
+          {/* this tag is inside of main tag */}
+          <div className="max-w-6xl m-auto">{children}</div>
         </NavBar>
       </div>
     </>

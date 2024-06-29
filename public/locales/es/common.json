@@ -32,5 +32,7 @@
   "quoteCreated": "Cotizacion creada",
   "product": "Producto",
   "quantityExpected": "Cantidad esperada",
-  "quantityAvailable": "Cantidad disponible"
+  "quantityAvailable": "Cantidad disponible",
+  "quote": "Cotizacion",
+  "sale": "Vendedor"
 }

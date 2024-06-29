@@ -7,24 +7,24 @@ import Table from '@/components/common/Table/Table';
 import Input from '@/components/common/Input/Input';
 import { useRouter } from 'next/router';
 import { RFQ } from '../@types';
-import { ChangeEvent, useMemo, useState } from 'react';
-import { headerRFQ } from '@/constants/headers';
-import useRFQList from '@/hooks/queries/useRFQList';
+import { useMemo, useState } from 'react';
+import { headerQuote } from '@/constants/headers';
+import useQuoteList from '@/hooks/queries/useQuoteList';
 import debounce from 'just-debounce-it';
 
-const Home = () => {
+const Quote = () => {
   const router = useRouter();
   const { t } = useTranslation(['common']);
   const [email, setEmail] = useState<string>('');
 
   const columns = useMemo(() => {
-    return headerRFQ.map((i) => ({
+    return headerQuote.map((i) => ({
       ...i,
       Header: t(i.Header),
     }));
   }, []);
 
-  const { list, fetchNextPage } = useRFQList(email);
+  const { list, fetchNextPage } = useQuoteList(email);
 
   const onClickButton = (type: string, row: RFQ) => {
     if (type === 'detail') {
@@ -37,15 +37,12 @@ const Home = () => {
   return (
     <div className="w-full  flex-col space-y-6 pl-6 pr-6 pt-6">
       <div className="flex items-center justify-between w-full">
-        <h1 className="tracking-wider leading-3 text-mds">{t('rfq')}</h1>
+        <h1 className="tracking-wider leading-3 text-mds">{t('quote')}</h1>
       </div>
       <div className="flex m-w-full flex-col justify-end py-3 px-6 my-4 rounded-lg bg-white">
         <div className="m-3 grid grid-cols-3 gap-2">
           <Input
-            register={{
-              onChange: (e: ChangeEvent<HTMLInputElement>) =>
-                setDebounce(e.target.value),
-            }}
+            register={{}}
             type="text"
             placeholder={t('email')}
             label={t('email')}
@@ -75,4 +72,4 @@ export const getServerSideProps: GetServerSideProps = withAuth(
   },
 );
 
-export default Home;
+export default Quote;

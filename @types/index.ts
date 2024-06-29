@@ -168,3 +168,20 @@ export type ColumnCardProps = {
   tooltipTitle?: string;
   badge?: ReactElement;
 };
+
+export type NavBarItemProps = {
+  name: string;
+  href: string;
+  key: string;
+};
+
+export type NavigationMenu = {
+  name: string;
+  items?: {
+    name: string;
+    href: string;
+    key: string;
+  }[];
+  href: string;
+  key: string;
+};
