@@ -40,8 +40,8 @@ const Home = () => {
           <Input
             register={{}}
             type="text"
-            placeholder={t('name')}
-            label={t('name')}
+            placeholder={t('email')}
+            label={t('email')}
           />
         </div>
       </div>

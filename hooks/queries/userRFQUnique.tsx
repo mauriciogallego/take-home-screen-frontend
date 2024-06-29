@@ -2,12 +2,12 @@ import { useEffect, useContext } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { get } from '@/helper/api';
 import { LoadingContext } from '@/context/LoadingContext';
-import { IPaginatedResult, RFQ } from '@/@types/index';
+import { RFQ } from '@/@types/index';
 
 const useRFQUnique = ({ id }: { id: string }) => {
   const { add, remove } = useContext(LoadingContext);
 
-  const { data, isLoading, refetch } = useQuery<IPaginatedResult<RFQ>>({
+  const { data, isLoading, refetch } = useQuery<RFQ>({
     queryKey: ['rfq-unique', id],
     queryFn: () => get(`/rfq/${id}`).then((response) => response.data),
   });

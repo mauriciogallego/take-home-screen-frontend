@@ -15,10 +15,8 @@ const useFormulaList = () => {
           params: {
             take: 20,
             skip: 20 * (pageParam as number),
-            select: JSON.stringify({
-              customerEmail: true,
-              subject: true,
-              id: true,
+            include: JSON.stringify({
+              Quote: true,
             }),
           },
         }).then((response) => response.data),

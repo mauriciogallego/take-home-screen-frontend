@@ -3,17 +3,25 @@ export const headerRFQ = [
     Header: 'email',
     accessor: 'customerEmail',
     type: 'string',
-    width: '12%',
+    width: '15%',
   },
   {
-    Header: 'email',
+    Header: 'subject',
     accessor: 'subject',
     type: 'string',
     width: '30%',
   },
   {
+    Header: 'quoted',
+    accessor: 'quote',
+    align: 'center',
+    type: 'boolean',
+    width: '4%',
+  },
+  {
     Header: 'open',
     type: 'detail',
-    width: '2%',
+    align: 'center',
+    width: '3%',
   },
 ];

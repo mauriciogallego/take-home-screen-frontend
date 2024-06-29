@@ -7,6 +7,8 @@
   "sendQuote": "Enviar cotizacion",
   "confirm": "Confirmar",
   "cancel": "Cancelar",
+  "subject": "Tema",
+  "description": "Descripcion",
   "writeEmail": "Escribe tu email",
   "loginDescription": "Escribe tu email y contraseña para continuar",
   "login": "Iniciar sesión",
@@ -20,5 +22,15 @@
   "homePage": "Inicio",
   "error": "Error",
   "pageNotFound": "Página no encontrada",
-  "pageNotFound2": "Lo sentimos, no encontramos la página solicitada."
+  "pageNotFound2": "Lo sentimos, no encontramos la página solicitada.",
+  "quoted": "Cotizado",
+  "customer": "Cliente",
+  "products": "Productos",
+  "detailInfo": "Informacion detallada del RFQ",
+  "bodyMail": "Cuerpo del email",
+  "total": "Total",
+  "quoteCreated": "Cotizacion creada",
+  "product": "Producto",
+  "quantityExpected": "Cantidad esperada",
+  "quantityAvailable": "Cantidad disponible"
 }

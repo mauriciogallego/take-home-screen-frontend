@@ -124,12 +124,21 @@ export type TDProps = {
   showMenu?: boolean;
 };
 
+export type ProductRFQ = {
+  name: string;
+  unit: string;
+  quantity: number;
+  dimensions: string;
+  expiration_date: string;
+};
+
 export type RFQ = {
+  inventory: any;
   id: string;
   body: string;
   subject: string;
   customerEmail: string;
-  items: Object | Array<any>;
+  items: { products: ProductRFQ[] };
   createdAt: Date;
   updatedAt: Date;
 };
@@ -144,3 +153,18 @@ export interface IPaginatedResult<T> {
     hasMore?: boolean;
   };
 }
+
+export type ColumnCardProps = {
+  label?: string;
+  subLabel?: string | ReactElement;
+  description?: string;
+  variant: 'row' | 'column';
+  dateDetail?: string;
+  className?: string;
+  icon?: string;
+  children: ReactElement;
+  padding?: string;
+  tooltipText?: string;
+  tooltipTitle?: string;
+  badge?: ReactElement;
+};
