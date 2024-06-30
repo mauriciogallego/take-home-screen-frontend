@@ -13,7 +13,7 @@ export const headerRFQ = [
   },
   {
     Header: 'quoted',
-    accessor: 'quote',
+    accessor: 'Quote.id',
     align: 'center',
     type: 'boolean',
     width: '4%',

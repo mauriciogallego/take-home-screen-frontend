@@ -11,26 +11,24 @@ type QuoteParams = {
 export function useCreateQuote(onSuccess?: () => void) {
   const { add, remove } = useContext(LoadingContext);
 
-  const { mutate, isPending } = useMutation({
+  return useMutation({
     mutationKey: ['Quote-create'],
-    onSuccess: () => (onSuccess ? onSuccess() : undefined),
+    onMutate: () => {
+      add('post/quote/frq');
+    },
+    onSuccess: () => {
+      remove('post/quote/frq');
+      if (onSuccess) onSuccess();
+    },
+    onSettled: () => {
+      remove('post/quote/frq');
+    },
+    onError: () => {
+      remove('post/quote/frq');
+    },
     mutationFn: (content: QuoteParams) =>
       post(`/quote/rfq/${content.id}`, {
         data: content.data,
       }),
   });
-
-  useEffect(() => {
-    if (isPending) {
-      add('post/quote/frq');
-    } else {
-      remove('post/quote/frq');
-    }
-    return () => remove('post/quote/frq');
-  }, [isPending]);
-
-  return {
-    mutate,
-    isLoading: isPending,
-  };
 }

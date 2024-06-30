@@ -1,11 +1,12 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/jsx-no-useless-fragment */
 import { useEffect } from 'react';
 import debounce from 'just-debounce-it';
 import { useTable } from 'react-table';
-import { TableProps } from '@/@types/index';
+import { TDProps, TableProps, RemovingKeyProps } from '@/@types/index';
 import TD from './TD';
+import { Each } from '../Each/Each';
+import { omit } from 'lodash';
+
+export declare function removingKeyProps<T>(options: T): T;
 
 export default function Table({
   columns = [],
@@ -17,6 +18,10 @@ export default function Table({
 }: TableProps) {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
+
+  const removingKeyProps: typeof RemovingKeyProps = (props: any) => {
+    return omit(props, 'key');
+  };
 
   useEffect(() => {
     if (loadMore) {
@@ -58,63 +63,77 @@ export default function Table({
             className="divide-y-[1px] divide-[#E8EEF2]"
           >
             <thead className="rounded-t-lg">
-              {headerGroups.map((headerGroup) => (
-                <tr
-                  {...headerGroup.getHeaderGroupProps()}
-                  className="rounded-t-lg h-[57px]"
-                >
-                  {headerGroup.headers.map((column: any) => (
-                    <th
-                      {...column.getHeaderProps({
-                        style: {
-                          textAlign: column.align,
-                          width: column.width,
-                          minWidth: 85,
-                        },
-                      })}
-                      className="p-3 text-xs font-normal tracking-wider text-left"
-                    >
-                      {column.render('Header')}
-                    </th>
-                  ))}
-                </tr>
-              ))}
+              <Each
+                of={headerGroups}
+                render={(headerGroup) => (
+                  <tr
+                    {...removingKeyProps(headerGroup.getHeaderGroupProps())}
+                    className="rounded-t-lg h-[57px]"
+                  >
+                    <Each
+                      of={headerGroup.headers}
+                      render={(column: any) => (
+                        <th
+                          {...removingKeyProps(
+                            column.getHeaderProps({
+                              style: {
+                                textAlign: column.align,
+                                width: column.width,
+                                minWidth: 85,
+                              },
+                            }),
+                          )}
+                          className="p-3 text-xs font-normal tracking-wider text-left"
+                        >
+                          {column.render('Header')}
+                        </th>
+                      )}
+                    />
+                  </tr>
+                )}
+              />
               <tr />
             </thead>
             <tbody
               {...getTableBodyProps()}
               className="divide-y-[1px] divide-[#E8EEF2]"
             >
-              {rows.map((row) => {
-                prepareRow(row);
-                return (
-                  <tr
-                    className={
-                      clickRow
-                        ? 'cursor-pointer hover:bg-light-grey h-[55px]'
-                        : 'h-[55px] hover:bg-light-grey'
-                    }
-                    onClick={
-                      clickRow ? () => clickRow(row.original) : undefined
-                    }
-                    {...row.getRowProps()}
-                  >
-                    <>
-                      {row.cells.map((cell: any) => (
-                        <TD
-                          {...cell.getCellProps({
-                            cell,
-                            clickButton,
-                            clickSecondary,
-                            align: cell.column.align,
-                            maxWidth: cell.column.maxWidth,
-                          })}
-                        />
-                      ))}
-                    </>
-                  </tr>
-                );
-              })}
+              <Each
+                of={rows}
+                render={(row) => {
+                  prepareRow(row);
+                  return (
+                    <tr
+                      {...removingKeyProps(row.getRowProps())}
+                      className={
+                        clickRow
+                          ? 'cursor-pointer hover:bg-light-grey h-[55px]'
+                          : 'h-[55px] hover:bg-light-grey'
+                      }
+                      onClick={
+                        clickRow ? () => clickRow(row.original) : undefined
+                      }
+                    >
+                      <Each
+                        of={row.cells}
+                        render={(cell: any) => (
+                          <TD
+                            {...removingKeyProps<TDProps>(
+                              cell.getCellProps({
+                                cell,
+                                clickButton,
+                                clickSecondary,
+                                align: cell.column.align,
+                                maxWidth: cell.column.maxWidth,
+                              }),
+                            )}
+                          />
+                        )}
+                      />
+                    </tr>
+                  );
+                }}
+              />
             </tbody>
           </table>
         </div>

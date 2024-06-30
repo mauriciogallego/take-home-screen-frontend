@@ -3,6 +3,7 @@ import { UserOptions } from './User';
 import { navigation } from './constant';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
+import { Each } from '../common/Each/Each';
 
 type OpenSide = {
   children: ReactElement;
@@ -19,16 +20,19 @@ export default function NavBar({ children }: OpenSide) {
           className="flex-col mt-3 space-y-1 !w-[208px] items-center"
           aria-label="Sidebar"
         >
-          {navigation.map((item) => (
-            <Link
-              className="flex cursor-pointer items-center hover:bg-[#13171F] group px-2 py-2 text-white"
-              href={item.href}
-            >
-              <span className="ml-3 font-normal text-xs leading-4 tracking-wide text-neutro-400 py-1 group-active:text-[#E8EEF2]">
-                {t(item.name)}
-              </span>
-            </Link>
-          ))}
+          <Each
+            of={navigation}
+            render={(item) => (
+              <Link
+                className="flex cursor-pointer items-center hover:bg-[#13171F] group px-2 py-2 text-white"
+                href={item.href}
+              >
+                <span className="ml-3 font-normal text-xs leading-4 tracking-wide text-neutro-400 py-1 group-active:text-[#E8EEF2]">
+                  {t(item.name)}
+                </span>
+              </Link>
+            )}
+          />
         </nav>
       </div>
       <div className="flex flex-col w-full">

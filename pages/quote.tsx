@@ -5,15 +5,12 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Table from '@/components/common/Table/Table';
 import Input from '@/components/common/Input/Input';
-import { useRouter } from 'next/router';
-import { RFQ } from '../@types';
-import { useMemo, useState } from 'react';
+import { ChangeEvent, useMemo, useState } from 'react';
 import { headerQuote } from '@/constants/headers';
 import useQuoteList from '@/hooks/queries/useQuoteList';
 import debounce from 'just-debounce-it';
 
 const Quote = () => {
-  const router = useRouter();
   const { t } = useTranslation(['common']);
   const [email, setEmail] = useState<string>('');
 
@@ -26,12 +23,6 @@ const Quote = () => {
 
   const { list, fetchNextPage } = useQuoteList(email);
 
-  const onClickButton = (type: string, row: RFQ) => {
-    if (type === 'detail') {
-      router.push(`/rfq/${row.id}`);
-    }
-  };
-
   const setDebounce = debounce((value: string) => setEmail(value), 750);
 
   return (
@@ -42,7 +33,10 @@ const Quote = () => {
       <div className="flex m-w-full flex-col justify-end py-3 px-6 my-4 rounded-lg bg-white">
         <div className="m-3 grid grid-cols-3 gap-2">
           <Input
-            register={{}}
+            register={{
+              onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                setDebounce(e.target.value),
+            }}
             type="text"
             placeholder={t('email')}
             label={t('email')}
@@ -50,12 +44,7 @@ const Quote = () => {
         </div>
       </div>
       <div className="divide-y">
-        <Table
-          columns={columns}
-          data={list}
-          loadMore={fetchNextPage}
-          clickButton={onClickButton}
-        />
+        <Table columns={columns} data={list} loadMore={fetchNextPage} />
       </div>
     </div>
   );

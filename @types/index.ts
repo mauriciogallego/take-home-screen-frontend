@@ -185,3 +185,5 @@ export type NavigationMenu = {
   href: string;
   key: string;
 };
+
+export declare function RemovingKeyProps<T>(options: T): T;

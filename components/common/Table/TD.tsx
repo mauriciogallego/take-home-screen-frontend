@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
-import { get } from 'lodash';
 import { TDProps } from '@/@types/index';
 import Read from '@/svg/read';
 import Eye from '@/svg/eye';
