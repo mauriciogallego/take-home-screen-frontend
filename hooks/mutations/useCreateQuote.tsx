@@ -25,7 +25,7 @@ export function useCreateQuote(onSuccess?: () => void) {
 
     mutationFn: (content: QuoteParams) =>
       post(`/quote/rfq/${content.id}`, {
-        data: {},
+        data: content.data,
       }),
   });
 }
