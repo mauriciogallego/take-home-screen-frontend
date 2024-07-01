@@ -89,6 +89,7 @@ const RfqDetails: NextPage<Props> = ({ id }) => {
       data: {
         total,
         items,
+        address: data?.items?.address,
       },
     });
   };

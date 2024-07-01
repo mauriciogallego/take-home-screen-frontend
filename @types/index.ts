@@ -138,7 +138,7 @@ export type RFQ = {
   body: string;
   subject: string;
   customerEmail: string;
-  items: { products: ProductRFQ[] };
+  items: { products: ProductRFQ[]; address: string };
   createdAt: Date;
   updatedAt: Date;
 };
