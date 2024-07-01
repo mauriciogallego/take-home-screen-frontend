@@ -12,6 +12,13 @@ export const headerRFQ = [
     width: '30%',
   },
   {
+    Header: 'created',
+    accessor: 'createdAt',
+    align: 'center',
+    type: 'string',
+    width: '8%',
+  },
+  {
     Header: 'quoted',
     accessor: 'Quote.id',
     align: 'center',
@@ -30,6 +37,12 @@ export const headerQuote = [
   {
     Header: 'email',
     accessor: 'rfq.customerEmail',
+    type: 'string',
+    width: '13%',
+  },
+  {
+    Header: 'address',
+    accessor: 'address',
     type: 'string',
     width: '13%',
   },

@@ -24,6 +24,9 @@ const useQuoteList = (email: string) => {
                 customerEmail: email || undefined,
               },
             }),
+            orderBy: JSON.stringify({
+              createdAt: 'desc',
+            }),
           },
         }).then((response) => response.data),
       initialPageParam: 0,

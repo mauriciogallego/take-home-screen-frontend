@@ -1,9 +1,11 @@
 {
+  "address": "Dirección",
   "areYouSure": "¿Estas seguro que deseas cerrar sesión?",
   "askLogOut": "¿Deseas cerrar sesión?",
   "bodyMail": "Cuerpo del email",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
+  "created": "Creado",
   "customer": "Cliente",
   "description": "Descripcion",
   "detailInfo": "Informacion detallada del RFQ",

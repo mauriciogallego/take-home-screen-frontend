@@ -21,6 +21,9 @@ const useRFQList = (email: string) => {
             where: JSON.stringify({
               customerEmail: email || undefined,
             }),
+            orderBy: JSON.stringify({
+              createdAt: 'desc',
+            }),
           },
         }).then((response) => response.data),
       initialPageParam: 0,

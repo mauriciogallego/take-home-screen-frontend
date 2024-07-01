@@ -1,4 +1,3 @@
-/* eslint-disable no-unneeded-ternary */
 import { createContext, useEffect, useState } from 'react';
 import Toast from '@/components/Toast/Toast';
 import { errorMessages } from '@/constants/errorMessages';

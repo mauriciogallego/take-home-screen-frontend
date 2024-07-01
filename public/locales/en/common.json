@@ -1,9 +1,11 @@
 {
+  "address": "Address",
   "areYouSure": "Are you sure you want to log out?",
   "askLogOut": "Do you want to log out?",
   "bodyMail": "Email body",
   "cancel": "Cancel",
   "confirm": "Confirm",
+  "created": "Created",
   "customer": "Customer",
   "description": "Description",
   "detailInfo": "Detailed RFQ information",

@@ -17,18 +17,15 @@ export function useCreateQuote(onSuccess?: () => void) {
       add('post/quote/frq');
     },
     onSuccess: () => {
-      remove('post/quote/frq');
       if (onSuccess) onSuccess();
     },
     onSettled: () => {
       remove('post/quote/frq');
     },
-    onError: () => {
-      remove('post/quote/frq');
-    },
+
     mutationFn: (content: QuoteParams) =>
       post(`/quote/rfq/${content.id}`, {
-        data: content.data,
+        data: {},
       }),
   });
 }
