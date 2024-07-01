@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { format } from 'date-fns';
 import { TDProps } from '@/@types/index';
 import Read from '@/svg/read';
 import Eye from '@/svg/eye';
@@ -30,6 +31,7 @@ const TD = ({ cell, clickButton = () => null, align = 'left' }: TDProps) => {
           </div>
         </td>
       );
+
     case 'detail':
       return (
         <td className="p-3 max-w-[100px] whitespace-nowrap text-neutro-300">
@@ -87,6 +89,16 @@ const TD = ({ cell, clickButton = () => null, align = 'left' }: TDProps) => {
             className={`text-neutro-300 whitespace-nowrap text-${align} text-xs font-light overflow-hidden text-ellipsis max-w-max-w`}
           >
             {cell.render('Cell')}
+          </div>
+        </td>
+      );
+    case 'date':
+      return (
+        <td className="p-3 hover:bg-light-grey max-w-[100px] truncate">
+          <div
+            className={`text-neutro-300 whitespace-nowrap text-${align} text-xs font-light overflow-hidden text-ellipsis max-w-max-w`}
+          >
+            {format(new Date(cell.value), 'dd/MM/yyyy HH:mm')}hs.
           </div>
         </td>
       );

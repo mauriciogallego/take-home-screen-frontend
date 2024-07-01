@@ -15,21 +15,21 @@ export const headerRFQ = [
     Header: 'created',
     accessor: 'createdAt',
     align: 'center',
-    type: 'string',
-    width: '8%',
+    type: 'date',
+    width: '12%',
   },
   {
     Header: 'quoted',
     accessor: 'Quote.id',
     align: 'center',
     type: 'boolean',
-    width: '4%',
+    width: '7%',
   },
   {
     Header: 'open',
     type: 'detail',
     align: 'center',
-    width: '3%',
+    width: '7%',
   },
 ];
 
